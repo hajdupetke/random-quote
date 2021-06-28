@@ -18,10 +18,34 @@ const Box = styled.div`
 const Button = styled.button`
   border: 2px solid #cc2b5e;
   border-radius: 5%;
-  padding: 2%;
+  padding: 0.5em;
+  min-width: 7vw;
+  min-height: 5vh;
+  margin: 2%;
   background-color: white;
   cursor: pointer;
 
+  &:hover {
+    background-color: #cc2b5e;
+    color: white;
+    transition: 0.2s;
+  }
+`;
+
+const TweetButton = styled.a`
+  border: 2px solid #cc2b5e;
+  border-radius: 5%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7vw;
+  min-height: 4.3vh;
+  margin: 2%;
+  background-color: white;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
   &:hover {
     background-color: #cc2b5e;
     color: white;
@@ -49,11 +73,18 @@ const QuoteBox: FunctionComponent<{ initial?: Quote }> = ({
   }, [count]);
 
   return (
-    <Box>
-      <h1>{quote.quote}</h1>
+    <Box id="quote-box">
+      <h1 id="text">{quote.quote}</h1>
       <Flex>
-        <legend>{quote.author}</legend>
-        <Button onClick={() => setCount(count + 1)}>New Quote</Button>
+        <legend id="author">{quote.author}</legend>
+        <Flex>
+          <Button onClick={() => setCount(count + 1)} id="new-quote">
+            New Quote
+          </Button>
+          <TweetButton href="https://twitter.com/intent/tweet" id="tweet-quote">
+            Tweet!
+          </TweetButton>
+        </Flex>
       </Flex>
     </Box>
   );
