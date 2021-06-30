@@ -71,7 +71,7 @@ const QuoteBox: FunctionComponent<{ initial?: Quote }> = ({
       await setQuote(temp);
     })();
   }, [count]);
-
+  let url = `https://twitter.com/intent/tweet?text=${quote.quote}`
   return (
     <Box id="quote-box">
       <h1 id="text">{quote.quote}</h1>
@@ -81,7 +81,7 @@ const QuoteBox: FunctionComponent<{ initial?: Quote }> = ({
           <Button onClick={() => setCount(count + 1)} id="new-quote">
             New Quote
           </Button>
-          <TweetButton href="https://twitter.com/intent/tweet?text={quote.quote}" id="tweet-quote">
+          <TweetButton href={url} id="tweet-quote">
             Tweet!
           </TweetButton>
         </Flex>
